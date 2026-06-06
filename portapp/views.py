@@ -27,6 +27,12 @@ def index(request):
                 'desc':  'Learning management system with course creation, enrollment, assignments, and role-based access.',
                 'github': 'https://github.com/Pavani-Reddy03102005',
             },
+            {
+                'title': 'Personal Portfolio Website',
+                'stack': 'Django · HTML · CSS · JavaScript',
+                'desc':  'Designed and developed a fully responsive personal portfolio website using Django. Showcases projects, internships, skills, and education with a clean dark-themed UI. All data is dynamically rendered via Django template context.',
+                'github': 'https://github.com/Pavani-Reddy03102005',
+            },
         ],
         'internships': [
             {
