@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ name }} — Portfolio</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Segoe UI',sans-serif; background:#0d1117; color:#e6edf3; }
+    a { color:#58a6ff; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    nav {
+      position:sticky; top:0;
+      background:#161b22; border-bottom:1px solid #30363d;
+      padding:0 2rem; height:52px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand { color:#58a6ff; font-weight:700; font-size:1.1rem; }
+    .nav-links a { color:#8b949e; margin-left:1.5rem; font-size:0.9rem; }
+    .nav-links a:hover { color:#e6edf3; text-decoration:none; }
+
+    section { padding:4rem 0; }
+    .container { max-width:860px; margin:0 auto; padding:0 1.5rem; }
+    h2 {
+      font-size:1.5rem; margin-bottom:1.5rem;
+      padding-bottom:0.5rem; border-bottom:1px solid #30363d;
+    }
+
+    /* HERO */
+    #hero { min-height:90vh; display:flex; align-items:center; }
+    .hero-tag  { color:#7ee787; font-size:0.9rem; margin-bottom:0.5rem; }
+    .hero-name { font-size:3rem; font-weight:700; line-height:1.1; }
+    .hero-sub  { color:#8b949e; font-size:1.1rem; margin:0.5rem 0 1.2rem; }
+    .hero-about {
+      color:#8b949e; max-width:580px;
+      line-height:1.8; margin-bottom:2rem;
+    }
+    .btn {
+      display:inline-block; padding:0.6rem 1.4rem;
+      border-radius:8px; font-size:0.9rem; font-weight:600;
+      margin-right:0.8rem; margin-bottom:0.5rem;
+    }
+    .btn-blue  { background:#58a6ff; color:#0d1117; }
+    .btn-ghost { border:1px solid #30363d; color:#e6edf3; }
+    .btn:hover { opacity:0.85; text-decoration:none; }
+    .socials { margin-top:1.8rem; display:flex; flex-wrap:wrap; gap:0.6rem; }
+    .social-pill {
+      border:1px solid #30363d; color:#8b949e;
+      padding:0.3rem 0.9rem; border-radius:20px; font-size:0.82rem;
+    }
+    .social-pill:hover {
+      border-color:#58a6ff; color:#58a6ff; text-decoration:none;
+    }
+
+    /* SKILLS */
+    #skills { background:#161b22; }
+    .skill-tags { display:flex; flex-wrap:wrap; gap:0.6rem; }
+    .skill-tag {
+      background:#1f3448; color:#58a6ff;
+      padding:0.3rem 0.9rem; border-radius:6px; font-size:0.85rem;
+    }
+
+    /* PROJECTS */
+    .cards {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(340px,1fr));
+      gap:1.2rem;
+    }
+    .card {
+      background:#161b22; border:1px solid #30363d;
+      border-radius:10px; padding:1.5rem;
+      transition:border-color 0.2s, transform 0.2s;
+    }
+    .card:hover { border-color:#58a6ff; transform:translateY(-3px); }
+    .card h3 { font-size:1rem; font-weight:700; margin-bottom:0.3rem; }
+    .card .stack { color:#7ee787; font-size:0.78rem; margin-bottom:0.8rem; }
+    .card p { color:#8b949e; font-size:0.88rem; line-height:1.7; margin-bottom:1rem; }
+    .card a {
+      font-size:0.82rem; border:1px solid #30363d;
+      padding:0.25rem 0.7rem; border-radius:6px;
+    }
+    .card a:hover { border-color:#58a6ff; text-decoration:none; }
+
+    /* INTERNSHIPS */
+    #internships { background:#161b22; }
+    .intern-item {
+      border-left:3px solid #58a6ff;
+      background:#21262d; border-radius:8px;
+      padding:1.2rem 1.4rem; margin-bottom:1rem;
+    }
+    .intern-top {
+      display:flex; justify-content:space-between;
+      flex-wrap:wrap; gap:0.3rem;
+    }
+    .intern-top h3 { font-size:0.98rem; font-weight:700; }
+    .intern-period { font-size:0.78rem; color:#7ee787; }
+    .intern-item p { color:#8b949e; font-size:0.87rem; margin-top:0.5rem; }
+
+    /* EDUCATION */
+    .edu-item {
+      background:#161b22; border:1px solid #30363d;
+      border-radius:8px; padding:1.1rem 1.4rem;
+      display:flex; justify-content:space-between;
+      align-items:center; flex-wrap:wrap; gap:0.5rem;
+      margin-bottom:0.9rem;
+    }
+    .edu-item h3 { font-size:0.98rem; font-weight:700; }
+    .edu-item p  { font-size:0.83rem; color:#8b949e; margin-top:0.2rem; }
+    .edu-score   { color:#7ee787; font-size:1rem; font-weight:700; }
+    .edu-year    { font-size:0.78rem; color:#8b949e; text-align:right; }
+
+    /* CONTACT */
+    #contact { background:#161b22; text-align:center; }
+    #contact p { color:#8b949e; margin-bottom:1.8rem; }
+    .contact-links {
+      display:flex; justify-content:center;
+      flex-wrap:wrap; gap:0.8rem;
+    }
+    .contact-chip {
+      background:#21262d; border:1px solid #30363d;
+      color:#8b949e; padding:0.55rem 1.2rem;
+      border-radius:8px; font-size:0.87rem;
+    }
+    .contact-chip:hover {
+      border-color:#58a6ff; color:#58a6ff; text-decoration:none;
+    }
+
+    footer {
+      text-align:center; padding:1.8rem;
+      color:#8b949e; font-size:0.8rem;
+      border-top:1px solid #30363d;
+    }
+
+    @media(max-width:600px){
+      .hero-name { font-size:2rem; }
+      .cards { grid-template-columns:1fr; }
+      .nav-links a { margin-left:0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="brand">pavani.dev</span>
+  <div class="nav-links">
+    <a href="#hero">Home</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#internships">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <p class="hero-tag">👋 Hello, This is {{ name }}</p>
+    <h1 class="hero-name">{{ name }}</h1>
+    <p class="hero-sub">CS Engineering Student · Django · AI/ML</p>
+    <p class="hero-about">{{ about }}</p>
+    <div>
+      <a href="#projects" class="btn btn-blue">View Projects</a>
+      <a href="#contact"  class="btn btn-ghost">Contact Me</a>
+    </div>
+    <div class="socials">
+      <a href="{{ linkedin }}" target="_blank" class="social-pill">🔗 LinkedIn</a>
+      <a href="{{ github }}"   target="_blank" class="social-pill">💻 GitHub</a>
+      <a href="{{ leetcode }}" target="_blank" class="social-pill">🧩 LeetCode</a>
+      <a href="{{ codechef }}" target="_blank" class="social-pill">👨‍🍳 CodeChef</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <h2>Skills</h2>
+    <div class="skill-tags">
+      {% for s in skills %}
+      <span class="skill-tag">{{ s }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="cards">
+      {% for p in projects %}
+      <div class="card">
+        <h3>{{ p.title }}</h3>
+        <p class="stack">{{ p.stack }}</p>
+        <p>{{ p.desc }}</p>
+        <a href="{{ p.github }}" target="_blank">↗ GitHub</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- INTERNSHIPS -->
+<section id="internships">
+  <div class="container">
+    <h2>Internships</h2>
+    {% for i in internships %}
+    <div class="intern-item">
+      <div class="intern-top">
+        <h3>{{ i.company }}</h3>
+        <span class="intern-period">{{ i.period }}</span>
+      </div>
+      <p>{{ i.desc }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <h2>Education</h2>
+    {% for e in education %}
+    <div class="edu-item">
+      <div>
+        <h3>{{ e.degree }}</h3>
+        <p>{{ e.school }}</p>
+      </div>
+      <div>
+        <div class="edu-score">{{ e.score }}</div>
+        <div class="edu-year">{{ e.year }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 style="border:none;">Get In Touch</h2>
+    <p>Open to internships, collaborations, and interesting projects.</p>
+    <div class="contact-links">
+      <a href="mailto:{{ email }}"  class="contact-chip">📧 {{ email }}</a>
+      <a href="tel:{{ phone }}"     class="contact-chip">📱 {{ phone }}</a>
+      <a href="{{ linkedin }}" target="_blank" class="contact-chip">🔗 LinkedIn</a>
+      <a href="{{ github }}"   target="_blank" class="contact-chip">💻 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>Built with Django · R. Pavani</footer>
+
+</body>
+</html>
